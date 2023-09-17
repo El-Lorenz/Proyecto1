@@ -5,5 +5,17 @@
     </h1>
     <p>El nombre del profesor es: {{nombre_persona}} {{apellido_persona}}</p>
     <p>Estamos viendo esta plantilla a dia: {{momento_actual}}</p>
+    <p><strong>Temas del curso:</strong></p>
+    <p>
+        <ul>
+        {% if temas %}    
+            {% for variable in temas %}
+                <li>{{variable}}</li>
+            {% endfor %}
+        {% else %}
+            <p>No hay elementos que mostrar</p>
+        {% endif %}
+        </ul>
+    </p>
     </body>
     </html>
