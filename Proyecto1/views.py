@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
+from django.template import loader
 
 class Persona(object):
     def __init__(self,nombre,apellido):
@@ -18,15 +19,17 @@ def saludo (request): # primera vista
 
     ahora=datetime.datetime.now()
     
-    doc_externo=open("C:/Users/Lorenzo/Documents/GitHub/Django/Proyecto1/Proyecto1/plantillas/miplantilla.html")
+    #doc_externo=open("C:/Users/Lorenzo/Documents/GitHub/Django/Proyecto1/Proyecto1/plantillas/miplantilla.html")
 
-    plt=Template(doc_externo.read())
+    #plt=Template(doc_externo.read())
 
-    doc_externo.close()
+    #doc_externo.close()
 
-    ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
+    doc_externo=loader.get_template('miplantilla.html')
 
-    documento=plt.render(ctx)
+    #ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
+
+    documento=doc_externo.render({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
 
 
     return HttpResponse(documento)

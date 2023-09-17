@@ -3,6 +3,21 @@
     <h1>
     Primera pagina con plantilla
     </h1>
+
+    {% comment %} LINEA PARA COMENTARIO
+                    DE DOS LINEAS
+    {% endcomment %}
+
+    {% if nombre_persona == 'Profesor Juan' %}
+
+    <p>Curso dado por profesor tirular</p>
+
+    {% else %}
+
+    <p>Curso dado por profesor suplente</p>
+
+    {% endif %}
+
     <p>El nombre del profesor es: {{nombre_persona}} {{apellido_persona}}</p>
     <p>Estamos viendo esta plantilla a dia: {{momento_actual}}</p>
     <p><strong>Temas del curso:</strong></p>
