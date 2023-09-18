@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
-from django.template import loader
+from django.template.loader import get_template
+from django.shortcuts import render
 
 class Persona(object):
     def __init__(self,nombre,apellido):
@@ -25,14 +26,15 @@ def saludo (request): # primera vista
 
     #doc_externo.close()
 
-    doc_externo=loader.get_template('miplantilla.html')
+    #doc_externo=loader.get_template('miplantilla.html')
 
     #ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
 
-    documento=doc_externo.render({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
+    #documento=doc_externo.render({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
 
 
-    return HttpResponse(documento)
+    #return HttpResponse(documento)
+    return render(request,"miplantilla.html",{"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"momento_actual":ahora, "temas":temasDelCurso})
 
 def damefecha(request):
     fecha_actual=datetime.datetime.now()
